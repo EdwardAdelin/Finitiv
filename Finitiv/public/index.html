@@ -1,58 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finitiv Photography - Wedding & Event Photography</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Finitiv Photography</h1>
-        <p>Capturing Your Most Precious Moments</p>
-    </header>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Finitiv Photography</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container header-inner">
+                <a class="brand" href="/">Finitiv</a>
+                <nav class="site-nav" aria-label="Main navigation">
+                    <a href="#about">About</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+            <div class="hero">
+                <div class="container hero-inner">
+                    <h1 class="hero-title">Beautiful wedding & event photography</h1>
+                    <p class="hero-sub">Minimal, timeless images that tell your story.</p>
+                    <a class="btn btn-primary" href="#portfolio">View Portfolio</a>
+                </div>
+            </div>
+        </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+        <main>
+            <section id="about" class="section container">
+                <div class="about-grid">
+                    <div>
+                        <h2>About Finitiv</h2>
+                        <p>We capture real moments with a clean, modern approach. Our images focus on emotion, light and composition — creating photographs you'll love forever.</p>
+                        <p>Based on years of experience, we help you feel comfortable in front of the camera so your photos look natural and effortless.</p>
+                    </div>
+                    <div class="about-image" aria-hidden="true"></div>
+                </div>
+            </section>
 
-    <section id="about">
-        <h2>About Finitiv</h2>
-        <p>Welcome to Finitiv Photography, where we specialize in capturing the magic of weddings and special events. With years of experience and a passion for storytelling through images, we create timeless memories that you'll cherish forever.</p>
-        <p>Our team of professional photographers uses state-of-the-art equipment and creative techniques to deliver stunning visuals that reflect the unique beauty of your special day.</p>
-    </section>
+            <section id="portfolio" class="section container">
+                <h2>Portfolio</h2>
+                <div id="photo-gallery" class="gallery-grid" aria-live="polite"></div>
+            </section>
 
-    <section id="portfolio">
-        <h2>Our Portfolio</h2>
-        <div id="photo-gallery"></div>
-    </section>
+            <section id="contact" class="section container contact-section">
+                <div class="contact-card">
+                    <h2>Contact</h2>
+                    <p>Ready to capture your day? Send a message and we'll get back to you with availability and packages.</p>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-row">
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <textarea id="message" name="message" placeholder="Tell us a little about your event" required></textarea>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <div id="form-response" class="form-response" aria-live="polite"></div>
+                    </form>
+                </div>
+            </section>
+        </main>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Ready to capture your special moments? Get in touch with us!</p>
-        <form id="contact-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            
-            <button type="submit">Send Message</button>
-        </form>
-        <div id="form-response"></div>
-    </section>
+        <footer class="site-footer">
+            <div class="container">
+                <p>&copy; 2025 Finitiv Photography</p>
+            </div>
+        </footer>
 
-    <footer>
-        <p>&copy; 2025 Finitiv Photography. All rights reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>

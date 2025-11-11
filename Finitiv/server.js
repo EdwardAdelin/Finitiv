@@ -1,6 +1,7 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const fs = require('fs');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -11,7 +12,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+// In production, serve the React build if it exists; otherwise fall back to legacy public folder
+const reactDist = path.join(__dirname, 'client', 'dist');
+if (process.env.NODE_ENV === 'production' && fs.existsSync(reactDist)) {
+  app.use(express.static(reactDist));
+} else {
+  app.use(express.static(path.join(__dirname, 'public')));
+}
 
 // Connect to SQLite database
 const db = new sqlite3.Database('./database.db');
@@ -94,6 +101,15 @@ app.post('/api/contact', (req, res) => {
   });
   stmt.finalize();
 });
+
+// In production, serve index.html for non-API routes (SPA fallback)
+if (process.env.NODE_ENV === 'production' && fs.existsSync(reactDist)) {
+  app.get('*', (req, res) => {
+    // only handle non-API routes
+    if (req.path.startsWith('/api')) return res.status(404).end();
+    res.sendFile(path.join(reactDist, 'index.html'));
+  });
+}
 
 app.listen(port, () => {
   console.log(`Finitiv Portfolio server running at http://localhost:${port}`);
